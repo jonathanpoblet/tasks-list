@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{ useState } from 'react';
+import { Tasks } from './interfaces/interfaces';
+import { Urgency } from './enums/enum';
+
 import './App.css';
 
 function App() {
+  
+  const [tasks,setTasks] = useState<Tasks[]>([
+    {
+      title: 'Learn TypeScript',
+      description: 'Learn new language TypeScript in 4 weeks',
+      urgency: Urgency.NORMAL
+    }
+  ])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" >
+      <h1>Tasks</h1>
+      <div>
+        {/* {
+          tasks.map(task => {
+            return(
+
+            )
+          })
+        } */}
+      </div>
     </div>
   );
 }

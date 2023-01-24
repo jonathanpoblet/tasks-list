@@ -15,14 +15,14 @@ function TaskList({tasks}: Props) {
       {
         tasks.map(tasks => {
           return (
-            <li>
+            <li className={tasks.completed === true ? 'completed' : 'pending'} key={ tasks.id }>
               <h3>{ tasks.title }</h3>
               <p>{ tasks.description }</p>
-              <button>{ tasks.urgency }</button>
+              <button className={tasks.urgency === 'Normal'? 'normal' : 'urgent' }>{ tasks.urgency }</button>
               <div>
-                <Trash/>
+                <Trash className='icons trash'/>
                 {
-                  tasks.completed ? <ToggleOn/> : <ToggleOff/>
+                  tasks.completed ? <ToggleOn  className='icons toggle'/> : <ToggleOff  className='icons'/>
                 }
               </div>
             </li>

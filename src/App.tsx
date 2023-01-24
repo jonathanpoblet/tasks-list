@@ -1,39 +1,26 @@
-import React,{ useState } from 'react';
+import React,{ useEffect, useState } from 'react';
 import { Tasks } from './interfaces/interfaces';
-import { Urgency } from './enums/enum';
 
 import './App.css';
 import TaskList from './components/TaskList';
+import FormTask from './components/Form';
 
 function App() {
   
-  const [tasks,setTasks] = useState<Tasks[]>([
-    {
-      id: 1,
-      title: 'Learn TypeScript',
-      description: 'Learn new language TypeScript in 4 weeks ',
-      urgency: Urgency.NORMAL,
-      completed:false
-    },
-    {
-      id: 2,
-      title: 'Learn TypeScript',
-      description: 'Learn new language TypeScript in 4 weeks',
-      urgency: Urgency.URGENT,
-      completed:true
-    },
-    {
-      id: 3,
-      title: 'Learn TypeScript',
-      description: 'Learn new language TypeScript in 4 weeks',
-      urgency: Urgency.NORMAL,
-      completed:false
-    }
-  ])
+  const [tasks,setTasks] = useState<Tasks[]>([]);
+
+  function addTask (task:Tasks): void{
+    const tempTasks = [...tasks];
+    tempTasks.push(task);
+    setTasks(tempTasks);
+  }
 
   return (
     <div className="App" >
       <h1>Tasks</h1>
+      <FormTask
+        addTask={ addTask }
+      />
       <TaskList
         tasks={ tasks }
       />

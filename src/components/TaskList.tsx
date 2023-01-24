@@ -6,28 +6,36 @@ import '../styles/tasklist.css'
 
 interface Props {
   tasks : Array<Tasks>
+  deleteTask: (task:Tasks) => void
+  completedTask: (task:Tasks) => void
 }
 
-function TaskList({tasks}: Props) {
+function TaskList({ tasks, deleteTask,completedTask }: Props) {
   
   return (
     <ul>
       {
-        tasks.map(tasks => {
+        tasks.length !== 0 ? 
+        tasks.map(task => {
           return (
-            <li className={tasks.completed === true ? 'completed' : 'pending'} key={ tasks.id }>
-              <h3>{ tasks.title }</h3>
-              <p>{ tasks.description }</p>
-              <button className={tasks.urgency === 'Normal'? 'normal' : 'urgent' }>{ tasks.urgency }</button>
+            <li className={ task.completed === true ? 'completed' : 'pending'} key={ task.id }>
+              <h3>{ task.title }</h3>
+              <p>{ task.description }</p>
+              <button className={task.urgency === 'Normal'? 'normal' : 'urgent' }>{ task.urgency }</button>
               <div>
-                <Trash className='icons trash'/>
+                <Trash onClick={() => deleteTask(task)} className='icons trash'/>
                 {
-                  tasks.completed ? <ToggleOn  className='icons toggle'/> : <ToggleOff  className='icons'/>
+                  task.completed ? 
+                    <ToggleOn onClick={() => completedTask(task)}  className='icons toggle'/> 
+                    : 
+                    <ToggleOff onClick={() => completedTask(task)}  className='icons'/>
                 }
               </div>
             </li>
           )
         })
+        :
+        <p>NO TASKS, PLEASE ADD</p>
       }
     </ul>
   )

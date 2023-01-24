@@ -21,18 +21,19 @@ li {
 li h3 {
     font-size: 18px;
     font-weight: 500;
-    width: 150px;
+    width: 23%;
 }
 
 li p {
     font-size: 15px;
-    width: 500px;
+    width: 50%;
 }
 
 li button {
     padding: 5px 10px;
     border-radius: 5px;
     color: #fff;
+    width: 13%;
 }
 
 .normal {

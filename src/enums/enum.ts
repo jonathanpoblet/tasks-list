@@ -1,4 +1,4 @@
 export enum Urgency {
-    NORMAL = 'Normal',
-    URGENT = 'Urgent'
+    Normal = 'Normal',
+    Urgent = 'Urgent'
 }

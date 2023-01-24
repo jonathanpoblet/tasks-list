@@ -18,7 +18,7 @@ const formTaskSchema = Yup.object().shape(
                 .required('Title is required'),
     description: Yup.string()
                 .min(5,'Description too short')
-                .max(20,'Description too long')
+                .max(40,'Description too long')
                 .required('Description is required'),
   }
 );
@@ -29,7 +29,7 @@ function FormTask({addTask}: Props) {
     id: Math.floor(Math.random() * 1000000),
     title:'',
     description:'',
-    urgency:Urgency.NORMAL,
+    urgency:Urgency.Normal,
     completed:false, 
   }
   
@@ -39,9 +39,8 @@ function FormTask({addTask}: Props) {
       initialValues={ INITIAL_VALUES }
       validationSchema={ formTaskSchema }
       onSubmit={(values) => {
+        values.completed = false;
         addTask(values);
-        console.log(values);
-        
       }}
     >
       {
@@ -70,8 +69,8 @@ function FormTask({addTask}: Props) {
                   id='description' type='text' name='description' placeholder='Task Description' className='form-container-input-description'
                 />
                 <Field as='select' name='urgency' className='form-container-select'>
-                  <option className='form-container-select-option' value='NORMAL'>Normal</option>
-                  <option className='form-container-select-option' value='URGENT'>Urgent</option>
+                  <option className='form-container-select-option' value='Normal' selected>Normal</option>
+                  <option className='form-container-select-option' value='Urgent'>Urgent</option>
                 </Field>
                 <button type='submit' className='form-container-button'>ADD TASK</button>
               </div>             

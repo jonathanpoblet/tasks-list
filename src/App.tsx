@@ -30,8 +30,8 @@ function App() {
 } 
 
   return (
-    <div className="App" >
-      <h1>Tasks</h1>
+    <div className="app" >
+      <h1 className='app-title'>Tasks</h1>
       <FormTask
         addTask={ addTask }
       />

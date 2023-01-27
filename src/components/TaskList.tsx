@@ -35,7 +35,7 @@ function TaskList({ tasks, deleteTask,completedTask }: Props) {
           )
         })
         :
-        <p>NO TASKS, PLEASE ADD</p>
+        <p className='no-tasks'>NO TASKS, PLEASE ADD</p>
       }
     </ul>
   )

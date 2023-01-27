@@ -38,9 +38,10 @@ function FormTask({addTask}: Props) {
     <Formik
       initialValues={ INITIAL_VALUES }
       validationSchema={ formTaskSchema }
-      onSubmit={(values) => {
+      onSubmit={(values, { resetForm }) => {
         values.completed = false;
         addTask(values);
+        resetForm()
       }}
     >
       {
